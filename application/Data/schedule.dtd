@@ -1,0 +1,57 @@
+<!-- DTD: winter2016-day.xml, winter2016-time.xml, and winter2016-course.xml 
+     Simon Su, Mark Khauv -->
+
+<!ELEMENT schedule (day, time, course)+>
+
+<!-- day element contains specific day -->
+<!ELEMENT day (dayz)*>
+
+<!-- dayz element contains day booking of certain course -->
+<!ELEMENT dayz (dayBooking)*>
+<!ATTLIST dayz
+    weekday (Monday|Tuesday|Wednesday|Thursday|Friday) #REQUIRED
+>
+
+<!-- day booking element contains starting time, ending time, course name, room#, instructor -->
+<!ELEMENT dayBooking (timeStart, timeEnd, courseName, room, instructor)*>
+
+<!-- time element contains timeslot available for course times -->
+<!ELEMENT time (timeslot)*>
+
+<!-- timeslot element contains time booking certain courses -->
+<!ELEMENT timeslot (timeBooking)*>
+<!ATTLIST timeslot
+    duration CDATA #REQUIRED
+    start CDATA #REQUIRED
+    end CDATA #REQUIRED
+>
+
+<!-- time booking element contains day slot, course name, room, instructor -->
+<!ELEMENT timeBooking (daySlot, courseName, room, instructor)*>
+
+<!-- course elements contains courses available in the term -->
+<!ELEMENT course (aCourse)*>
+
+<!-- aCourse elements contains course booking at a certain day and time -->
+<!ELEMENT aCourse (courseBooking)*>
+
+<!-- code for course id, name for course -->
+<!ATTLIST aCourse
+    code CDATA #REQUIRED
+    name CDATA #REQUIRED
+>
+
+<!-- course booking element contains starting time, endingtime, day slot, room, instructor -->
+<!ELEMENT courseBooking (daySlot, timeStart, timeEnd, room, instructor)*>
+<!-- course type -->
+<!ATTLIST courseBooking
+    type (Lab|Lecture|Tutorial) #REQUIRED
+>
+
+<!-- elements contain no children -->
+<!ELEMENT timeStart (#PCDATA)*>
+<!ELEMENT timeEnd (#PCDATA)*>
+<!ELEMENT daySlot (#PCDATA)*>
+<!ELEMENT courseName (#PCDATA)*>
+<!ELEMENT room (#PCDATA)*>
+<!ELEMENT instructor (#PCDATA)*>
