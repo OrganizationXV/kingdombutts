@@ -1,0 +1,91 @@
+<!-- 
+DTD for: winter2016-day.xml, winter2016-time.xml, and winter2016-course.xml.
+-->
+
+<!ELEMENT schedule (day, time, course)+>
+
+<!-- 
+Each day element contains a specific day of the week (excluding weekend).
+-->
+<!ELEMENT day (dayz)*>
+
+<!-- 
+Each dayz element contains day booking of certain course.
+-->
+<!ELEMENT dayz (dayBooking)*>
+<!ATTLIST dayz
+    weekday (Monday|Tuesday|Wednesday|Thursday|Friday) #REQUIRED
+>
+
+<!-- Each dBooking element contains:
+timeStart   - starting time,
+timeEnd     - dismissal time,
+courseName  - name of the scheduled course at that time slot,
+room        - where the scheduled course will be held, and
+instructor  - who teaches the scheduled course
+-->
+<!ELEMENT dayBooking (timeStart, timeEnd, courseName, room, instructor)*>
+
+<!-- 
+time element contains timeslot available for course times
+-->
+<!ELEMENT time (timeslot)*>
+
+<!-- 
+timeslot element contains time booking certain courses.
+-->
+<!ELEMENT timeslot (timeBooking)*>
+<!ATTLIST timeslot
+    duration CDATA #REQUIRED
+    start CDATA #REQUIRED
+    end CDATA #REQUIRED
+>
+
+<!-- 
+Each pBooking element contains:
+daySlot     - weekday slot,
+courseName  - name of the scheduled course at that weekday slot,
+room        - where the scheduled course will be held, and
+instructor  - who teaches the scheduled course
+-->
+<!ELEMENT timeBooking (daySlot, courseName, room, instructor)*>
+
+<!-- 
+ course elements contains courses available in the term
+-->
+<!ELEMENT course (aCourse)*>
+
+<!-- 
+aCourse elements contains course booking at a certain day and time.
+-->
+<!ELEMENT aCourse (courseBooking)*>
+<!-- 
+code = unique program course id 
+name = course name
+-->
+<!ATTLIST aCourse
+    code CDATA #REQUIRED
+    name CDATA #REQUIRED
+>
+
+<!-- 
+Each cBooking element contains:
+timeStart   - starting time,
+timeEnd     - dismissal time,
+daySlot     - weekday slot,
+room        - where the scheduled course will be held, and
+instructor  - who teaches the scheduled course
+-->
+<!ELEMENT courseBooking (daySlot, timeStart, timeEnd, room, instructor)*>
+<!-- type refers to course type -->
+<!ATTLIST courseBooking
+    type (Lab|Lecture|Tutorial) #REQUIRED
+>
+
+<!-- Elements containing no children -->
+<!ELEMENT timeStart (#PCDATA)*>
+<!ELEMENT timeEnd (#PCDATA)*>
+<!ELEMENT daySlot (#PCDATA)*>
+<!ELEMENT courseName (#PCDATA)*>
+<!ELEMENT room (#PCDATA)*>
+<!ELEMENT instructor (#PCDATA)*>
