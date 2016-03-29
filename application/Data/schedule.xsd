@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- winter2016-course.xml
+Simon Su, Mark Khauv -->
+     
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+    <!-- check the day -->
+    <xs: element name="dayz">
+	<xs:simpleType>
+            <xs:restriction base="xs:string">
+		<xs:enumeration value="Monday"/>
+		<xs:enumeration value="Tuesday"/>
+		<xs:enumeration value="Wednesday"/>
+		<xs:enumeration value="Thursday"/>
+		<xs:enumeration value="Friday"/>
+            </xs:restriction>
+	</xs:simpleType>
+    </xs:>
+        
+    <!-- timeStart in 4 digits -->
+    <xs: element name="timeStart">
+        <xs:simpleType>
+            <xs:restriction base="xs:integer">
+                <xs:pattern value="[0-2][0-9][0-5][0-9]"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:>
+    
+    <!-- time in 4 digits -->
+    <xs: element name="timeEnd">
+        <xs:simpleType>
+            <xs:restriction base="xs:integer">
+                <xs:pattern value="[0-2][0-9][0-5][0-9]"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:>
+   	
+    <!-- a schedule contains 5 dayz -->
+    <xs:element name="schedule">
+	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="dayz" type="dayzslot" maxOccurs="5"/>
+            </xs:sequence>
+	</xs:complexType>
+    </xs:element>
+</xs:schema>
