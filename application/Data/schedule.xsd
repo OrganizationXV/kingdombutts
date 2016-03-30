@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- schedule.xsd
+Simon Su, Mark Khauv -->
+     
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+    <!-- a dayBooking using complexType -->
+    <xs:complexType name="dayBooking">
+        <xs:sequence>
+          <xs:element name="timeStart" type="xs:string"/>
+          <xs:element name="timeEnd" type="xs:string"/>
+          <xs:element name="courseName" type="xs:string"/>
+          <xs:element name="room" type="xs:string"/>
+          <xs:element name="instructor" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- schedule has max 5 days a week -->
+    <xs:element name="schedule">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="day" type="dayz" maxOccurs="5"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <!-- check the day using simpleType-->
+    <xs:element name="days">
+	<xs:simpleType>
+            <xs:restriction base="xs:string">
+		<xs:enumeration value="Monday"/>
+		<xs:enumeration value="Tuesday"/>
+		<xs:enumeration value="Wednesday"/>
+		<xs:enumeration value="Thursday"/>
+		<xs:enumeration value="Friday"/>
+            </xs:restriction>
+	</xs:simpleType>
+    </xs:element>
+        
+    <!-- timeStart in 4 digits using pattern-based restriction-->
+    <xs:element name="timeStart">
+        <xs:simpleType>
+            <xs:restriction base="xs:integer">
+                <xs:pattern value="[0-2][0-9][0-5][0-9]"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    
+    <!-- timeEnd in 4 digits using pattern-based restriction-->
+    <xs:element name="timeEnd">
+        <xs:simpleType>
+            <xs:restriction base="xs:integer">
+                <xs:pattern value="[0-2][0-9][0-5][0-9]"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+</xs:schema>
