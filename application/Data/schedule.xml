@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="schedule.xsl"?>
 
 <!-- schedule.xml
      Simon Su, Mark Khauv -->
@@ -70,4 +71,33 @@
         </dayBooking>
     </dayz>
 </day>
+
+<time>
+    <timeslot timeStart="830">
+        <timeBooking daySlot="Tuesday" courseID="4620" room="SE12-306" instructor="Bethany Edmunds" endTime="1020" />
+    </timeslot>
+    
+    <timeslot timeStart="1030">
+        <timeBooking daySlot="Monday" courseID="4650" room="SE12-306" instructor="Medhat Elmasry" endTime="1220"/> 
+    </timeslot>
+    
+    <timeslot timeStart="1230"> 
+    </timeslot>
+        <timeBooking daySlot="Tuesday" courseID="4650" room="SW9-206" instructor="Medhat Elmasry" endTime="1320"/>
+        <timeBooking daySlot="Wednesday" courseID="4850" room="SW3-1750" instructor="Jim Parry" endTime="1420"/>
+    </timeslot>
+    
+    <timeslot timeStart="1330">
+        <timeBooking daySlot="Thursday" courseID="4850" room="SE12-308" instructor="Jim Parry" endTime="1520"/>
+    </timeslot>
+    
+    <timeslot timeStart="1530">
+        <timeBooking daySlot="Tuesday" courseID="4620" room="SW3-3615" instructor="Bethany Edmunds" endTime="1720"/> 
+    </timeslot>
+    
+    <timeslot timeStart="1630">
+        <timeBooking daySlot="Monday" courseID="4650" room="SE6-205" instructor="Medhat Elmasry" endTime="1720"/> 
+    </timeslot>
+</time>
+
 </schedule>
